@@ -173,6 +173,11 @@ object_type_overrides: t.Mapping[str, ResolverType] = {
 }
 
 
+@process_definition.register(ast.ScalarTypeDefinitionNode)
+def process_scalar(definition, known_types) -> None:
+    return None
+
+
 @process_definition.register(ast.ObjectTypeDefinitionNode)
 def process_object(
     definition: ast.ObjectTypeDefinitionNode, known_types: t.Mapping[str, str]

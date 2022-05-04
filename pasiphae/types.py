@@ -77,6 +77,11 @@ def get_interfaces_object(definition: ast.ObjectTypeDefinitionNode) -> str:
     return ", ".join(map(lambda type_: type_.name.value, definition.interfaces))
 
 
+@process_definition.register(ast.ScalarTypeDefinitionNode)
+def process_object(definition: ast.ObjectTypeDefinitionNode, known_types) -> None:
+    return None
+
+
 @process_definition.register(ast.ObjectTypeDefinitionNode)
 @process_definition.register(ast.InputObjectTypeDefinitionNode)
 def process_object(
